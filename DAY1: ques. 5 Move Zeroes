@@ -1,0 +1,25 @@
+class Solution {
+public:
+   void rec(vector<int>& nums, int first, int last) {
+        if (first >= last) {
+            return;
+        }
+        
+        if (nums[first] == 0) {
+            for (int i = first; i < last; ++i) {
+                swap(nums[i], nums[i + 1]);
+            }
+            nums[last] = 0;
+            rec(nums, first, last - 1); // Adjust the range after moving zero to the end
+        } else {
+            rec(nums, first + 1, last);
+        }
+    }
+    void moveZeroes(vector<int>& nums) {
+        int first=0;
+        int last=nums.size()-1;
+        rec(nums,first,last);
+        return;
+        
+    }
+};
