@@ -1,0 +1,30 @@
+class Solution {
+public:
+    void setting(vector<vector<int>>& demo,int nrow,int ncol, int i, int j){
+        if(i>nrow || j>ncol) return;
+
+        for(int k=0;k<ncol;k++){
+            demo[i][k]=0;
+        }
+        for(int l=0;l<nrow;l++){
+            demo[l][j]=0;
+        }
+        return;
+
+    }
+    void setZeroes(vector<vector<int>>& matrix) {
+        int nrow=matrix.size();
+        int ncol=matrix[0].size();
+        vector<vector<int>> demo;
+        demo=matrix;
+        for(int i=0;i<nrow;i++){
+            for(int j=0;j<ncol;j++){
+                if(matrix[i][j]==0){
+                    setting(demo,nrow,ncol,i,j);
+                }
+            }
+        }
+        matrix=demo;
+        return;
+    }
+};
